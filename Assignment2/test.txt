@@ -1,0 +1,17 @@
+Set-Cookie: ns1="alss/0.foobar^"
+Set-Cookie: ns1=
+Set-Cookie: ns1=; Expires=Wed, 19 Nov 2008 16:35:39 GMT
+Set-Cookie: ns1=; Domain=
+Set-Cookie: ns1=; Domain=.srv.a.com-0
+Set-Cookie: lu=Rg3v; Expires=Wed, 19 Nov 2008 16:35:39 GMT; Path=/; Domain=.example.com; HttpOnly
+Set-Cookie:
+Set-Cookie: sd
+Set-Cookie: =alss/0.foobar^
+Set-Cookie: ns@1=alss/0.foobar^
+Set-Cookie: ns1=alss/0.foobar^;
+Set-Cookie: ns1=; Expires=Wed 19 Nov 2008 16:35:39 GMT
+Set-Cookie: ns1=alss/0.foobar^; Max-Age=01
+Set-Cookie: ns1=alss/0.foobar^; Domain=.0com
+Set-Cookie: ns1=alss/0.foobar^; Domain=.com-
+Set-Cookie: ns1=alss/0.foobar^; Path=
+Set-Cookie: ns1=alss/0.foobar^; httponly
