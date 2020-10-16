@@ -45,6 +45,9 @@ public class Calculator {
     }
   };
 
+  private Stack<Integer> valueStack = new Stack<Integer>();
+  private Stack<Character> operatorStack = new Stack<Character>();
+
   /**
    * Checks for bracket balance in the expression
    * 
@@ -70,16 +73,14 @@ public class Calculator {
   /**
    * Does binary operation on the stack
    * 
-   * @param values    {@code Stack<Integer>} stack that holds all the operands
-   * @param operators {@code Stack<Character>} stack that holds all the operators
    * @throws SyntaxError
    */
-  private void doOperation(Stack<Integer> values, Stack<Character> operators) throws SyntaxError {
-    int val2 = values.pop();
-    int val1 = values.pop();
+  private void doOperation() throws SyntaxError {
+    int val2 = valueStack.pop();
+    int val1 = valueStack.pop();
     int result = 0;
 
-    switch (operators.pop()) {
+    switch (operatorStack.pop()) {
       case '+':
         result = val1 + val2;
         break;
@@ -96,7 +97,7 @@ public class Calculator {
         throw new SyntaxError("invalid operator");
     }
 
-    values.push(result);
+    valueStack.push(result);
   }
 
   /**
@@ -123,8 +124,8 @@ public class Calculator {
    * @throws RuntimeError
    */
   private int evaluateMath(String exp) throws SyntaxError, RuntimeError {
-    Stack<Character> opStack = new Stack<Character>();
-    Stack<Integer> valStack = new Stack<Integer>();
+    operatorStack.clear();
+    valueStack.clear();
     // assumes that all operands and operations are split by spaces
     String[] tokens = exp.split(" ");
     boolean noOperator = false;
@@ -133,22 +134,22 @@ public class Calculator {
         if (noOperator)
           throw new SyntaxError("operator expected");
 
-        valStack.push(t.matches("\\d+") ? Integer.parseInt(t) : getVariable(t));
+        valueStack.push(t.matches("\\d+") ? Integer.parseInt(t) : getVariable(t));
         noOperator = true;
       } else if (t.matches("[*+^-]")) {
         char operator = t.charAt(0);
-        if (!opStack.empty() && operationOrder.get(operator) <= operationOrder.get(opStack.peek()))
-          doOperation(valStack, opStack);
+        if (!operatorStack.empty() && operationOrder.get(operator) <= operationOrder.get(operatorStack.peek()))
+          doOperation();
 
-        opStack.push(operator);
+        operatorStack.push(operator);
         noOperator = false;
       }
     }
 
-    while (!opStack.empty())
-      doOperation(valStack, opStack);
+    while (!operatorStack.empty())
+      doOperation();
 
-    return valStack.pop();
+    return valueStack.pop();
   }
 
   /**
