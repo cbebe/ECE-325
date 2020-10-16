@@ -3,16 +3,16 @@ import java.util.Stack;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+@SuppressWarnings("serial")
 class RuntimeError extends Exception {
-  private static final long serialVersionUID = 1L;
 
   public RuntimeError(String message) {
     super(message);
   }
 }
 
+@SuppressWarnings("serial")
 class SyntaxError extends Exception {
-  private static final long serialVersionUID = 1L;
 
   public SyntaxError(String message) {
     super(message);
@@ -36,11 +36,20 @@ public class Calculator {
    * Evaluates a string with purely binary operations Using PEMAS as the order of
    * operations (no division)
    * 
-   * @param operations {@code String} string to be evaluated
+   * @param str {@code String} string to be evaluated
    * @return {@code int} value of the expression
    */
-  int evalOperations(String operations) {
+  int evalOperations(String str) {
     int returnValue = 0;
+    Stack<Integer> nums = new Stack<Integer>();
+    Stack<Character> operands = new Stack<Character>();
+
+    System.out.println(str);
+
+    String token = "";
+    for (int i = 0, n = str.length(); i < n; ++i) {
+
+    }
 
     return returnValue;
   }
@@ -55,14 +64,30 @@ public class Calculator {
     int returnValue = 0;
     variableMap.clear();
     operationStack.clear();
-    // TODO: Assignment 4 Part 1 -- parse, calculate the expression, and return the
-    // correct value
 
     String token = "";
     for (int i = 0, n = exp.length(); i < n; ++i) {
-      token += exp.charAt(i);
+      char c = exp.charAt(i);
+      if (c == ' ')
+        continue;
 
-      token = "";
+      if (c == '(') {
+        operationStack.push(token);
+        token = "";
+      } else if (c == ')') {
+        Integer tokenRes = evalOperations(token);
+        String top = operationStack.pop();
+        operationStack.push(top + tokenRes);
+        token = "";
+      } else if (c == ';') {
+        operationStack.push(token);
+        while (!operationStack.empty()) {
+          returnValue = evalOperations(operationStack.pop());
+        }
+        return returnValue;
+      } else {
+        token += c;
+      }
     }
 
     // TODO: Assignment 4 Part 2-1 -- when come to illegal expressions, raise proper
@@ -94,7 +119,7 @@ public class Calculator {
       try {
         System.out.println(String.format("%d -- %-90s %d", i + 1, inputs[i], calc.execExpression(inputs[i])));
       } catch (Exception e) {
-        System.out.println(e);
+        // no errors
       }
 
     // Part 2
