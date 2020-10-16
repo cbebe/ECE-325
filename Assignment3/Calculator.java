@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 
 @SuppressWarnings("serial")
 class RuntimeError extends Exception {
-
   public RuntimeError(String message) {
     super(message);
   }
@@ -13,7 +12,6 @@ class RuntimeError extends Exception {
 
 @SuppressWarnings("serial")
 class SyntaxError extends Exception {
-
   public SyntaxError(String message) {
     super(message);
   }
@@ -54,6 +52,22 @@ public class Calculator {
     return returnValue;
   }
 
+  public void checkBrackets(String exp) throws SyntaxError {
+    int bCount = 0; // number of open parentheses
+    for (int i = 0; i < exp.length(); ++i) {
+      char c = exp.charAt(i);
+      if (c == '(') {
+        ++bCount;
+      } else if (c == ')') {
+        if (bCount == 0)
+          throw new SyntaxError("\"(\" expected");
+        --bCount;
+      }
+    }
+    if (bCount > 0)
+      throw new SyntaxError("\")\" expected");
+  }
+
   /**
    * Execute the expression, and return the correct value
    * 
@@ -62,36 +76,10 @@ public class Calculator {
    */
   public int execExpression(String exp) throws RuntimeError, SyntaxError {
     int returnValue = 0;
-    variableMap.clear();
-    operationStack.clear();
-
-    String token = "";
-    for (int i = 0, n = exp.length(); i < n; ++i) {
-      char c = exp.charAt(i);
-      if (c == ' ')
-        continue;
-
-      if (c == '(') {
-        operationStack.push(token);
-        token = "";
-      } else if (c == ')') {
-        Integer tokenRes = evalOperations(token);
-        String top = operationStack.pop();
-        operationStack.push(top + tokenRes);
-        token = "";
-      } else if (c == ';') {
-        operationStack.push(token);
-        while (!operationStack.empty()) {
-          returnValue = evalOperations(operationStack.pop());
-        }
-        return returnValue;
-      } else {
-        token += c;
-      }
-    }
-
-    // TODO: Assignment 4 Part 2-1 -- when come to illegal expressions, raise proper
-    // exceptions
+    checkBrackets(exp);
+    Pattern p = Pattern.compile("let [a-z] [^=]+");
+    if (p.matcher(exp).find())
+      throw new SyntaxError("\"=\" expected");
 
     return returnValue;
   }
