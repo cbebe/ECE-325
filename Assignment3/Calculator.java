@@ -18,7 +18,7 @@ class SyntaxError extends Exception {
 }
 
 /**
- * ECE 326 - Fall 2020 <br/>
+ * ECE 325 - Fall 2020 <br/>
  * Assignment 4: Exception handling <br/>
  * Calculator using BNF
  * <p>
@@ -27,32 +27,31 @@ class SyntaxError extends Exception {
  */
 public class Calculator {
 
-  private HashMap<String, Integer> variableMap = new HashMap<String, Integer>();
-  private Stack<String> operationStack = new Stack<String>();
+  /**
+   * HashMap to store variables
+   */
+  private HashMap<String, Integer> varMap = new HashMap<String, Integer>();
 
   /**
-   * Evaluates a string with purely binary operations Using PEMAS as the order of
-   * operations (no division)
-   * 
-   * @param str {@code String} string to be evaluated
-   * @return {@code int} value of the expression
+   * HashMap for order of operations
    */
-  int evalOperations(String str) {
-    int returnValue = 0;
-    Stack<Integer> nums = new Stack<Integer>();
-    Stack<Character> operands = new Stack<Character>();
-
-    System.out.println(str);
-
-    String token = "";
-    for (int i = 0, n = str.length(); i < n; ++i) {
-
+  @SuppressWarnings("serial")
+  private HashMap<Character, Integer> operationOrder = new HashMap<Character, Integer>() {
+    {
+      put('-', 0);
+      put('+', 1);
+      put('*', 2);
+      put('^', 3);
     }
+  };
 
-    return returnValue;
-  }
-
-  public void checkBrackets(String exp) throws SyntaxError {
+  /**
+   * Checks for bracket balance in the expression
+   * 
+   * @param exp {@code String} expression to be checked
+   * @throws SyntaxError
+   */
+  private void checkBrackets(String exp) throws SyntaxError {
     int bCount = 0; // number of open parentheses
     for (int i = 0; i < exp.length(); ++i) {
       char c = exp.charAt(i);
@@ -69,19 +68,160 @@ public class Calculator {
   }
 
   /**
+   * Does binary operation on the stack
+   * 
+   * @param values    {@code Stack<Integer>} stack that holds all the operands
+   * @param operators {@code Stack<Character>} stack that holds all the operators
+   * @throws SyntaxError
+   */
+  private void doOperation(Stack<Integer> values, Stack<Character> operators) throws SyntaxError {
+    int val2 = values.pop();
+    int val1 = values.pop();
+    int result = 0;
+
+    switch (operators.pop()) {
+      case '+':
+        result = val1 + val2;
+        break;
+      case '-':
+        result = val1 - val2;
+        break;
+      case '*':
+        result = val1 * val2;
+        break;
+      case '^':
+        result = (int) Math.pow(val1, val2);
+        break;
+      default:
+        throw new SyntaxError("invalid operator");
+    }
+
+    values.push(result);
+  }
+
+  /**
+   * Gets value of variable from varMap
+   * 
+   * @param var {@code String} name of variable
+   * @return {@code int} value of variable
+   * @throws RuntimeError
+   */
+  private int getVariable(String var) throws RuntimeError {
+    try {
+      return varMap.get(var);
+    } catch (NullPointerException e) {
+      throw new RuntimeError(String.format("\"%s\" undefined", var));
+    }
+  }
+
+  /**
+   * Evaluates math expression using stacks
+   * 
+   * @param exp {@code String} expressionto be evaluated
+   * @return {@code int} final value of the expression
+   * @throws SyntaxError
+   * @throws RuntimeError
+   */
+  private int evaluateMath(String exp) throws SyntaxError, RuntimeError {
+    Stack<Character> opStack = new Stack<Character>();
+    Stack<Integer> valStack = new Stack<Integer>();
+    // assumes that all operands and operations are split by spaces
+    String[] tokens = exp.split(" ");
+    boolean noOperator = false;
+    for (String t : tokens) {
+      if (t.matches("\\d+|[a-z]")) {
+        if (noOperator)
+          throw new SyntaxError("operator expected");
+
+        valStack.push(t.matches("\\d+") ? Integer.parseInt(t) : getVariable(t));
+        noOperator = true;
+      } else if (t.matches("[*+^-]")) {
+        char operator = t.charAt(0);
+        if (!opStack.empty() && operationOrder.get(operator) <= operationOrder.get(opStack.peek()))
+          doOperation(valStack, opStack);
+
+        opStack.push(operator);
+        noOperator = false;
+      }
+    }
+
+    while (!opStack.empty())
+      doOperation(valStack, opStack);
+
+    return valStack.pop();
+  }
+
+  /**
+   * Evaluates an expression (without brackets)
+   * 
+   * @param exp {@code String} expression to be evaluated
+   * @return {@code int} final value of the expression
+   * @throws RuntimeError
+   * @throws SyntaxError
+   */
+  private int calculate(String exp) throws RuntimeError, SyntaxError {
+    if (exp.matches("^\\d+$"))
+      return Integer.parseInt(exp);
+
+    if (exp.matches("^[a-z]$"))
+      return getVariable(exp);
+
+    // the pinnacle of test-driven development
+    Pattern p = Pattern.compile("([a-z]+) *([a-z])? *(=)? *(.*)");
+    Matcher m = p.matcher(exp);
+    if (m.matches()) {
+      // invalid assignment command
+      if (!exp.startsWith("let"))
+        throw new RuntimeError(String.format("\"%s\" undefined", m.group(1)));
+
+      // assignment expression not closed
+      if (exp.substring(3).contains("let"))
+        throw new SyntaxError("\")\" expected");
+
+      if (m.group(3) == null)
+        throw new SyntaxError("\"=\" expected");
+
+      int val = calculate(m.group(4));
+      varMap.put(m.group(2), val);
+      return val;
+    }
+
+    return evaluateMath(exp);
+  }
+
+  /**
    * Execute the expression, and return the correct value
    * 
    * @param exp {@code String} The expression string
    * @return {@code int} The value of the expression
    */
   public int execExpression(String exp) throws RuntimeError, SyntaxError {
-    int returnValue = 0;
+    exp = exp.replace(";", ""); // remove ;
     checkBrackets(exp);
-    Pattern p = Pattern.compile("let [a-z] [^=]+");
-    if (p.matcher(exp).find())
-      throw new SyntaxError("\"=\" expected");
 
-    return returnValue;
+    Stack<String> expStack = new Stack<String>();
+    varMap.clear();
+
+    String token = "";
+    // split the expression between parentheses and push into stack
+    for (int i = 0; i < exp.length(); ++i) {
+      char c = exp.charAt(i);
+      if (c == '(') {
+        expStack.push(token);
+        token = "";
+      } else if (c == ')') {
+        int value = calculate(token);
+
+        if (expStack.isEmpty())
+          return value;
+
+        token = expStack.pop() + value;
+      } else {
+        token += c;
+      }
+    }
+
+    return calculate(token);
   }
 
   /**
@@ -107,7 +247,7 @@ public class Calculator {
       try {
         System.out.println(String.format("%d -- %-90s %d", i + 1, inputs[i], calc.execExpression(inputs[i])));
       } catch (Exception e) {
-        // no errors
+        System.out.println(e); // no errors here :)
       }
 
     // Part 2
@@ -118,14 +258,11 @@ public class Calculator {
         "(ler x = 5) ^ (let y = 6);", // 5, runtime error: 'ler' undefined
         "(let x = 5) + y;" // 6, runtime error: 'y' undefined
     };
-    // TODO: Assignment 3 Part 2-2 -- catch and deal with your exceptions here
     for (int i = 0; i < inputs.length; i++)
       try {
         System.out.println(String.format("%d -- %-30s %d", i + 1, inputs[i], calc.execExpression(inputs[i])));
       } catch (Exception e) {
         System.out.println(e);
       }
-
   }
-
 }
