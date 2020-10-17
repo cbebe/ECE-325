@@ -19,7 +19,7 @@ class SyntaxError extends Exception {
 
 /**
  * ECE 325 - Fall 2020 <br/>
- * Assignment 4: Exception handling <br/>
+ * Assignment 3: Exception handling <br/>
  * Calculator using BNF
  * <p>
  * 
