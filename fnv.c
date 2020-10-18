@@ -9,7 +9,13 @@ uint64_t fnv(void *b, int c) {
     return h;
 }
 
-int main() {
-    unsigned char b[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE};
-    printf("%llu\n", fnv(b, 5));
+size_t get_str_len(char *str) {
+    size_t len = 0;
+    while ((int)str[len] > 0) len++;
+    return len;
+}
+
+int main(int argc, char **argv) {
+    printf("%s\n", argv[1]);
+    printf("%llu\n", get_str_len(argv[1]));
 }
