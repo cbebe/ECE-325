@@ -1,10 +1,11 @@
+package ece325;
+
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 
 /**
- * ECE 325 - Fall 2020
- * Assignment 4 Part 1: Static Code Analysis <br />
+ * ECE 325 - Fall 2020 Assignment 4 Part 1: Static Code Analysis <br />
  * The buggy {@code CodingHorror} source code
  */
 public class CodingHorror {
@@ -16,7 +17,7 @@ public class CodingHorror {
         BufferedReader br = new BufferedReader(isr);
         String input = null;
         try {
-            input = br.readLine();                  // e.g., peel
+            input = br.readLine(); // e.g., peel
         } catch (IOException ioex) {
             System.err.println(ioex.getMessage());
         }
