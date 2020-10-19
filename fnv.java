@@ -1,12 +1,12 @@
 import java.math.BigInteger;
 
-public class BigNumber {
+public class fnv {
   /**
    * 
    * @param val byte array to hash
    * @return {@code long} fnv hash of byte array
    */
-  public static long fnv(byte[] val) {
+  public static long hash(byte[] val) {
     BigInteger fnvOffsetBasis = new BigInteger("14695981039346656037");
     BigInteger fnvPrime = new BigInteger("1099511628211");
 
@@ -21,6 +21,6 @@ public class BigNumber {
   public static void main(String[] args) {
     String val = "hello";
 
-    System.out.println(fnv(val.getBytes()));
+    System.out.println(hash(val.getBytes()));
   }
 }
