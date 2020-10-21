@@ -1,4 +1,5 @@
 package part1;
+
 /**
  * Lab 3: Inheritance, Interfaces, Hash and Big Number <br />
  * The {@code Printable} interface

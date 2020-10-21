@@ -1,4 +1,5 @@
 package part1;
+
 import java.util.Objects;
 
 /**
@@ -8,6 +9,13 @@ import java.util.Objects;
 public class SwEngineer extends Employee {
     private String projName;
 
+    /**
+     * Constructor for SwEngineer
+     * 
+     * @param name       {@code String} name of Sw Engineer
+     * @param baseSalary {@code double} base salary of Sw Engineer
+     * @param projName   {@code String} name of project
+     */
     public SwEngineer(String name, double baseSalary, String projName) {
         super(name, baseSalary);
         this.projName = projName;
@@ -22,7 +30,7 @@ public class SwEngineer extends Employee {
 
     @Override
     /**
-     * @return {@code int} hashCode created with  name, baseSalary, and projName
+     * @return {@code int} hashCode created with name, baseSalary, and projName
      */
     public int hashCode() {
         return Objects.hash(getName(), getBaseSalary(), projName);
@@ -37,12 +45,14 @@ public class SwEngineer extends Employee {
      * @return {@code boolean} true if the Object obj is equal to this
      */
     public boolean equals(Object obj) {
-        if (obj == this) return true;
+        if (obj == this)
+            return true;
 
-        if (!(obj instanceof SwEngineer)) return false;
+        if (!(obj instanceof SwEngineer))
+            return false;
 
         SwEngineer swe = (SwEngineer) obj;
-        return projName.equals(swe.projName) && getName().equals(swe.getName()) && getBaseSalary() == swe.getBaseSalary();
+        return projName.equals(swe.projName) && getName().equals(swe.getName())
+                && getBaseSalary() == swe.getBaseSalary();
     }
 }
-

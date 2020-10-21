@@ -1,4 +1,5 @@
 package part1;
+
 /**
  * Lab 3: Inheritance, Interfaces, Hash and Big Number <br />
  * The {@code Employee} class
@@ -6,6 +7,10 @@ package part1;
 public class Employee extends Person {
     private double baseSalary;
 
+    /**
+     * @param name       {@code String} name of employee
+     * @param baseSalary {@code double} base salary of employee
+     */
     public Employee(String name, double baseSalary) {
         super(name);
         this.baseSalary = baseSalary;
@@ -18,5 +23,3 @@ public class Employee extends Person {
         return baseSalary;
     }
 }
-
-
