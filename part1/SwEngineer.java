@@ -1,4 +1,5 @@
 package part1;
+
 import java.util.Objects;
 
 /**
@@ -22,10 +23,10 @@ public class SwEngineer extends Employee {
 
     @Override
     /**
-     * @return {@code int} hashCode created with  name, baseSalary, and projName
+     * @return {@code int} hashCode created with name, baseSalary, and projName
      */
     public int hashCode() {
-        return Objects.hash(getName(), getBaseSalary(), projName);
+        return Objects.hash(super.hashCode(), projName);
     }
 
     @Override
@@ -37,12 +38,14 @@ public class SwEngineer extends Employee {
      * @return {@code boolean} true if the Object obj is equal to this
      */
     public boolean equals(Object obj) {
-        if (obj == this) return true;
+        if (obj == this)
+            return true;
 
-        if (!(obj instanceof SwEngineer)) return false;
+        if (!(obj instanceof SwEngineer))
+            return false;
 
         SwEngineer swe = (SwEngineer) obj;
-        return projName.equals(swe.projName) && getName().equals(swe.getName()) && getBaseSalary() == swe.getBaseSalary();
+        return super.equals(swe) && projName.equals(swe.projName);
     }
 }
 

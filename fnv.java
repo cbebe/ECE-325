@@ -11,11 +11,13 @@ public class fnv {
   public static long FNVHash(byte[] val) {
     BigInteger fnvOffsetBasis = new BigInteger("14695981039346656037");
     BigInteger fnvPrime = new BigInteger("1099511628211");
+    // largest 64 bit value plus one
+    BigInteger longMaxPlusOne = new BigInteger("18446744073709551616");
 
     BigInteger hashNum = fnvOffsetBasis;
 
     for (int i = 0; i < val.length; ++i)
-      hashNum = fnvPrime.multiply(hashNum).xor(BigInteger.valueOf(val[i]));
+      hashNum = fnvPrime.multiply(hashNum).xor(BigInteger.valueOf(val[i])).mod(longMaxPlusOne);
 
     return hashNum.longValue();
   }
@@ -31,7 +33,6 @@ public class fnv {
         "The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system.",
         "Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux.",
         "All the so-called “Linux” distributions are really distributions of GNU/Linux.");
-
 
     System.out.println(FNVHash(String.join(" ", strList).getBytes()));
   }
