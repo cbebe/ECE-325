@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: ece325.TestCases.SolveQuadraticTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in ece325.TestCases.SolveQuadraticTests
+initializationError(ece325.TestCases.SolveQuadraticTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+

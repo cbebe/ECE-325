@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: ece325.TestSuites.AllTests
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.069 s <<< FAILURE! - in ece325.TestSuites.AllTests
+initializationError(ece325.TestCases.CreationTests)  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+
+initializationError(ece325.TestCases.AdditionTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+
+initializationError(ece325.TestCases.SubtractionTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+
+initializationError(ece325.TestCases.MultiplicationTests)  Time elapsed: 0.001 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+
+initializationError(ece325.TestCases.DivisionTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+
+initializationError(ece325.TestCases.SolveQuadraticTests)  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: LCalculator;
+Caused by: java.lang.ClassNotFoundException: Calculator
+
