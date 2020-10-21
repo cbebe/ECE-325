@@ -9,6 +9,11 @@ import java.util.Objects;
 public class Person {
     private String name;
 
+    /**
+     * Constructor for Person
+     * 
+     * @param name {@code String} name of person
+     */
     public Person(String name) {
         this.name = name;
     }

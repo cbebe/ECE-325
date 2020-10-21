@@ -9,6 +9,13 @@ import java.util.Objects;
 public class SwEngineer extends Employee {
     private String projName;
 
+    /**
+     * Constructor for SwEngineer
+     * 
+     * @param name       {@code String} name of Sw Engineer
+     * @param baseSalary {@code double} base salary of Sw Engineer
+     * @param projName   {@code String} name of project
+     */
     public SwEngineer(String name, double baseSalary, String projName) {
         super(name, baseSalary);
         this.projName = projName;
@@ -48,4 +55,3 @@ public class SwEngineer extends Employee {
         return super.equals(swe) && projName.equals(swe.projName);
     }
 }
-

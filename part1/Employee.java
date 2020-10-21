@@ -9,6 +9,10 @@ import java.util.Objects;
 public class Employee extends Person {
     private double baseSalary;
 
+    /**
+     * @param name       {@code String} name of employee
+     * @param baseSalary {@code double} base salary of employee
+     */
     public Employee(String name, double baseSalary) {
         super(name);
         this.baseSalary = baseSalary;
@@ -38,5 +42,3 @@ public class Employee extends Person {
         return Objects.hash(super.hashCode(), baseSalary);
     }
 }
-
-

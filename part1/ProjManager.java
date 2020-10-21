@@ -1,4 +1,5 @@
 package part1;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -9,11 +10,19 @@ import java.util.Objects;
 public class ProjManager extends SwEngineer implements SalaryRaisable, Printable {
     private Date projDeadline;
 
+    /**
+     * Constructor for ProjManager
+     * 
+     * @param name         {@code String} name of project manager
+     * @param baseSalary   {@code double} base salary of project manager
+     * @param projName     {@code String} name of project
+     * @param projDeadline {@code Date} deadline of project
+     */
     public ProjManager(String name, double baseSalary, String projName, Date projDeadline) {
         super(name, baseSalary, projName);
         this.projDeadline = projDeadline;
     }
- 
+
     /**
      * @return {@code Date} projDeadline field
      */
@@ -22,23 +31,26 @@ public class ProjManager extends SwEngineer implements SalaryRaisable, Printable
     }
 
     /**
-     * @return {@code double} raised salary after multiplying baseSalary by the given rate
+     * @return {@code double} raised salary after multiplying baseSalary by the
+     *         given rate
      */
     public double raiseSalary() {
         return getBaseSalary() * 1.24;
     }
 
     /**
-     * @return {@code String} information about the class (i.e. name, projName, raiseSalary, projDeadline)
+     * @return {@code String} information about the class (i.e. name, projName,
+     *         raiseSalary, projDeadline)
      */
     public String printInfo() {
-        return String.format("Name: %s, Project name: %s, Final salary: %s, Project deadline: %s",
-                getName(), getProjName(), raiseSalary(), getProjDeadline());
+        return String.format("Name: %s, Project name: %s, Final salary: %s, Project deadline: %s", getName(),
+                getProjName(), raiseSalary(), getProjDeadline());
     }
-    
+
     @Override
     /**
-     * @return {@code int} hashCode created with SwEngineer hash code and projDeadline
+     * @return {@code int} hashCode created with SwEngineer hash code and
+     *         projDeadline
      */
     public int hashCode() {
         return Objects.hash(super.hashCode(), projDeadline);
@@ -53,9 +65,11 @@ public class ProjManager extends SwEngineer implements SalaryRaisable, Printable
      * @return {@code boolean} true if the Object obj is equal to this
      */
     public boolean equals(Object obj) {
-        if (obj == this) return true;
+        if (obj == this)
+            return true;
 
-        if (!(obj instanceof ProjManager)) return false;
+        if (!(obj instanceof ProjManager))
+            return false;
 
         ProjManager proj = (ProjManager) obj;
         return super.equals(proj) && projDeadline.equals(proj.projDeadline);
