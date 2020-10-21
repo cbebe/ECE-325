@@ -14,18 +14,18 @@ public class CreationTests {
 
     private Calculator calc;
 
-    @Before 
+    @Before
     public void setUp() throws Exception {
         calc = new Calculator();
     }
 
-    @After 
+    @After
     public void tearDown() throws Exception {
     }
 
-    @Test 
+    @Test
     public void testCreation() {
-        assertNotNull(calc);		
+        assertNotNull(calc);
     }
 
 }

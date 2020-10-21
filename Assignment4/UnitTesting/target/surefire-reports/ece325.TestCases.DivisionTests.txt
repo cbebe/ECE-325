@@ -1,8 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ece325.TestCases.DivisionTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in ece325.TestCases.DivisionTests
-initializationError(ece325.TestCases.DivisionTests)  Time elapsed: 0 s  <<< ERROR!
-java.lang.NoClassDefFoundError: LCalculator;
-Caused by: java.lang.ClassNotFoundException: Calculator
-
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in ece325.TestCases.DivisionTests

@@ -14,30 +14,30 @@ public class SubtractionTests {
 
     private Calculator calc;
 
-    @Before 
+    @Before
     public void setUp() {
         calc = new Calculator();
     }
 
-    @After 
+    @After
     public void tearDown() {
-	}
+    }
 
-    @Test 
+    @Test
     public void testBasicSubtraction() {
-        assertEquals(calc.subtract(1.0, 1.0), Double.valueOf(0));	
+        assertEquals(calc.subtract(1.0, 1.0), Double.valueOf(0));
     }
 
-    @Test 
+    @Test
     public void testSubtractionNegativeNumber() {
-        assertEquals(calc.subtract(1.0, -1.0), Double.valueOf(2));	
+        assertEquals(calc.subtract(1.0, -1.0), Double.valueOf(2));
     }
 
-    @Test 
+    @Test
     public void testRandomSubtraction() {
         double a = (Math.random() - 0.5) * 200000000;
         double b = (Math.random() - 0.5) * 200000000;
-        assertEquals(calc.subtract(a, b), Double.valueOf(a-b));
+        assertEquals(calc.subtract(a, b), Double.valueOf(a - b));
     }
 
 }

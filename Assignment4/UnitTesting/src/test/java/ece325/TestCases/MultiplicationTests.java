@@ -14,34 +14,34 @@ public class MultiplicationTests {
 
     private Calculator calc;
 
-    @Before 
+    @Before
     public void setUp() throws Exception {
         calc = new Calculator();
     }
 
-    @After 
+    @After
     public void tearDown() throws Exception {
     }
 
-    @Test 
+    @Test
     public void BasicMultiplication() {
         assertEquals(calc.multiply(1.0, 1.0), Double.valueOf(1.0));
     }
 
-    @Test 
+    @Test
     public void MultiplicationNegativeNumber() {
         assertEquals(calc.multiply(1.0, -1.0), Double.valueOf(-1.0));
     }
 
-    @Test 
+    @Test
     public void RandomMultiplication() {
         double a = (Math.random() - 0.5) * 200000000;
         double b = (Math.random() - 0.5) * 200000000;
-        assertEquals(calc.multiply(a, b), Double.valueOf(a*b));
+        assertEquals(calc.multiply(a, b), Double.valueOf(a * b));
     }
 
-    @Test 
-    public void ReturnDouble() {	
+    @Test
+    public void ReturnDouble() {
         assertTrue(calc.multiply(1, 1).equals(Double.valueOf(1)));
     }
 

@@ -15,26 +15,26 @@ public class DivisionTests {
     private Calculator calc;
     private double epsilon = 0.0000001;
 
-    @Before 
+    @Before
     public void setUp() throws Exception {
         calc = new Calculator();
     }
 
-    @After 
+    @After
     public void tearDown() throws Exception {
     }
 
-    @Test 
+    @Test
     public void testBasicDivision() {
-        assertEquals(calc.divide(1.0, 2.0), Double.valueOf(0.5));	
+        assertEquals(calc.divide(1.0, 2.0), Double.valueOf(0.5));
     }
 
-    @Test 
+    @Test
     public void testDivisionNegativeNumber() {
-        assertEquals(calc.divide(1.0, -2.0), Double.valueOf(-0.5));	
+        assertEquals(calc.divide(1.0, -2.0), Double.valueOf(-0.5));
     }
 
-    @Test 
+    @Test
     public void testRandomDivision() {
         double a = (Math.random() - 0.5) * 200000000;
         double b = (Math.random() - 0.5) * 200000000;
@@ -43,15 +43,15 @@ public class DivisionTests {
         assertEquals(calc.divide(a, b), Double.valueOf(a / b));
     }
 
-    @Test 
+    @Test
     public void testDivisionByZero() {
-        double a = (Math.random() - 0.5)*200000000;
+        double a = (Math.random() - 0.5) * 200000000;
         double b = 0.0;
         assertTrue(calc.divide(a, b).isInfinite());
     }
 
-    @Test 
-    public void ReturnDouble() {	
+    @Test
+    public void ReturnDouble() {
         assertTrue(calc.divide(1, 1).equals(Double.valueOf(1)));
     }
 

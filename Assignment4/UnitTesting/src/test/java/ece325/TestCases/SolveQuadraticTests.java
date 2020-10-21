@@ -15,17 +15,17 @@ public class SolveQuadraticTests {
     private Calculator calc;
     private double epsilon = 0.0000001;
 
-    @Before 
+    @Before
     public void setUp() throws Exception {
         calc = new Calculator();
     }
 
-    @After 
+    @After
     public void tearDown() throws Exception {
     }
 
-    @Test 
-    public void testBasicRoots() { 
+    @Test
+    public void testBasicRoots() {
         double a = 1.0, b = -3.0, c = 2.0;
         Double[] roots = calc.getRoots(a, b, c);
         assertEquals(roots.length, 2);
@@ -35,16 +35,16 @@ public class SolveQuadraticTests {
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
     }
 
-    @Test 
+    @Test
     public void testSingleRoot() {
         double a = 1.0, b = 2.0, c = 1.0;
         Double[] roots = calc.getRoots(a, b, c);
-        assertEquals(roots.length,1);
+        assertEquals(roots.length, 1);
         double x = roots[0].doubleValue();
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
     }
 
-    @Test 
+    @Test
     public void testRandomSolvableQuadratic() {
         double a = (Math.random() - 0.5) * 200000000;
         double b = (Math.random() - 0.5) * 200000000;
@@ -63,15 +63,15 @@ public class SolveQuadraticTests {
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
     }
 
-    @Test 
+    @Test
     public void testRandomNonSolvableQuadratic() {
-        double a = (Math.random() - 0.5)*200000000;
-        double b = (Math.random() - 0.5)*200000000;
-        double c = (Math.random() - 0.5)*200000000;
+        double a = (Math.random() - 0.5) * 200000000;
+        double b = (Math.random() - 0.5) * 200000000;
+        double c = (Math.random() - 0.5) * 200000000;
         while (b * b - 4 * a * c > -epsilon) {
-            a = (Math.random() - 0.5)*200000000;
-            b = (Math.random() - 0.5)*200000000;
-            c = (Math.random() - 0.5)*200000000;
+            a = (Math.random() - 0.5) * 200000000;
+            b = (Math.random() - 0.5) * 200000000;
+            c = (Math.random() - 0.5) * 200000000;
         }
         Double[] roots = calc.getRoots(a, b, c);
         assertEquals(roots.length, 2);
