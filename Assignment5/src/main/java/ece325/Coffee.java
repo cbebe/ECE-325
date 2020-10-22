@@ -1,3 +1,5 @@
+package ece325;
+
 /**
  * Assignment 5: Interfaces <br />
  * Part 1: The {@code Coffee} class

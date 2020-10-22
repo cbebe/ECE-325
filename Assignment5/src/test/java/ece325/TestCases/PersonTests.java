@@ -1,3 +1,7 @@
+package ece325.TestCases;
+
+import ece325.Person;
+import ece325.PersonComparator;
 import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -6,7 +10,7 @@ import java.util.Set;
  * Assignment 5: Interfaces <br />
  * Part 3: The {@code PersonTest} class
  */
-public class PersonTest {
+public class PersonTests {
     public static void runTest() {
         // TODO: Assignment 5 Part 3 -- rewrite this using JUnit
         Set<Person> persons = new TreeSet<Person>(new PersonComparator());
