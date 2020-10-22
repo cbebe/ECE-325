@@ -45,7 +45,7 @@ public class SolveQuadraticTests {
     }
 
     @Test
-    public void testRandomSolvableQuadratic() {
+    public void testRandomSolvableQuadraticOnce() {
         double a = (Math.random() - 0.5) * 200000000;
         double b = (Math.random() - 0.5) * 200000000;
         double c = (Math.random() - 0.5) * 200000000;
@@ -61,6 +61,13 @@ public class SolveQuadraticTests {
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
         x = roots[1].doubleValue();
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
+    }
+
+    @Test
+    public void testRandomSolvableQuadratic() {
+        for (int i = 0; i < 500; ++i) {
+            testRandomSolvableQuadraticOnce();
+        }
     }
 
     @Test

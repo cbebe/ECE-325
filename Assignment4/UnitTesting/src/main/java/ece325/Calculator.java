@@ -25,21 +25,10 @@ public class Calculator {
     }
 
     public Double[] getRoots(double a, double b, double c) {
-        Double[] roots;
-        double epsilon = 0.0000001;
-        // discriminant in the quadratic equation
-        double disc = Math.sqrt(b * b - 4 * a * c);
-        // denominator in the quadratic equation
-        double deno = 2 * a;
-        if (disc >= epsilon) {
-            roots = new Double[] { (-b + disc) / deno, (-b - disc) / deno };
-        } else if (disc >= 0 && disc < epsilon) {
-            roots = new Double[] { -b / deno };
-        } else {
-            // roots are complex numbers
-            roots = new Double[] { Double.NaN, Double.NaN };
-        }
-        return roots;
+        double x1 = (-b + Math.sqrt((b * b) - 4 * a * c)) / (2 * a);
+        double x2 = (-b - Math.sqrt((b * b) - 4 * a * c)) / (2 * a);
+
+        return (x1 == x2) ? new Double[] { x1 } : new Double[] { x1, x2 };
     }
 
     public Double squareRoot(double a) {
