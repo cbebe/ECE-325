@@ -31,7 +31,7 @@ public class SquareRootTests {
         // You cannot use the Math.sqrt() function in the test!
         double a = Math.random() * 200000000;
         double sqrtA = calc.squareRoot(a);
-        assertTrue(Math.abs(sqrtA * sqrtA - a) < epsilon);
+        assertEquals(sqrtA * sqrtA, a, epsilon);
     }
 
     @Test
@@ -45,13 +45,13 @@ public class SquareRootTests {
     @Test
     public void testSquareRootofZero() {
         // You cannot use the Math.sqrt() function in the test!
-        assertTrue(Math.abs(calc.squareRoot(0.0) - 0.0) < epsilon);
+        assertEquals(calc.squareRoot(0.0), 0.0, epsilon);
     }
 
     @Test
     public void testSquareRootofOne() {
         // You cannot use the Math.sqrt() function in the test!
-        assertTrue(Math.abs(calc.squareRoot(1.0) - 1.0) < epsilon);
+        assertEquals(calc.squareRoot(1.0), 1.0, epsilon);
     }
 
 }

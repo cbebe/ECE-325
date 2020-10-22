@@ -36,6 +36,7 @@ public class Calculator {
         } else if (disc >= 0 && disc < epsilon) {
             roots = new Double[] { -b / deno };
         } else {
+            // roots are complex numbers
             roots = new Double[] { Double.NaN, Double.NaN };
         }
         return roots;
