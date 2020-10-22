@@ -1,5 +1,6 @@
 {
     "[java]": {
         "editor.defaultFormatter": "redhat.java"
-    }
+    },
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

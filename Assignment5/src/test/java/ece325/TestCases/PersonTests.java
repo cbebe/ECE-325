@@ -6,14 +6,29 @@ import java.util.TreeSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
 /**
  * Assignment 5: Interfaces <br />
  * Part 3: The {@code PersonTest} class
  */
 public class PersonTests {
-    public static void runTest() {
+    private Set<Person> persons;
+
+    @Before
+    public void setUp() throws Exception {
+        persons = new TreeSet<Person>(new PersonComparator());
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void runTest() {
         // TODO: Assignment 5 Part 3 -- rewrite this using JUnit
-        Set<Person> persons = new TreeSet<Person>(new PersonComparator());
         persons.add(new Person(32));
         persons.add(new Person(17));
         persons.add(new Person(13));
