@@ -1,13 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ece325.TestSuites.AllTests
 -------------------------------------------------------------------------------
-Tests run: 26, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.006 s <<< FAILURE! - in ece325.TestSuites.AllTests
-testRandomSolvableQuadraticOnce(ece325.TestCases.SolveQuadraticTests)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError
-	at ece325.TestCases.SolveQuadraticTests.testRandomSolvableQuadraticOnce(SolveQuadraticTests.java:62)
-
-testRandomSolvableQuadratic(ece325.TestCases.SolveQuadraticTests)  Time elapsed: 0 s  <<< FAILURE!
-java.lang.AssertionError
-	at ece325.TestCases.SolveQuadraticTests.testRandomSolvableQuadraticOnce(SolveQuadraticTests.java:65)
-	at ece325.TestCases.SolveQuadraticTests.testRandomSolvableQuadratic(SolveQuadraticTests.java:74)
-
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in ece325.TestSuites.AllTests
