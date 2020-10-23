@@ -58,15 +58,17 @@ public class SolveQuadraticTests {
         Double[] roots = calc.getRoots(a, b, c);
         assertEquals(roots.length, 2);
         x = roots[0].doubleValue();
+        assertTrue(!Double.isNaN(x));
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
         x = roots[1].doubleValue();
+        assertTrue(!Double.isNaN(x));
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
     }
 
     // this fails because the test above does not pass all the time because of
     // rounding errors
     // i am unsure whether that's okay or not
-    // @Test
+    @Test
     public void testRandomSolvableQuadratic() {
         for (int i = 0; i < 500; ++i) {
             testRandomSolvableQuadraticOnce();
