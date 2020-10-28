@@ -11,12 +11,14 @@ public class Coffee implements Comparable<Coffee> {
         this.strength = strength;
     }
 
+    /**
+     * Compares this to another Coffee object
+     * 
+     * @param c {@ocode Cofee} Coffee to be compared to this
+     * @return {@code int} the result of the comparison
+     */
     public int compareTo(Coffee c) {
-        if (c.strength > strength)
-            return -1;
-        else if (c.strength < strength)
-            return 1;
-        else
-            return 0;
+        // ternary operators muahaha
+        return (c.strength > strength) ? -1 : (c.strength < strength) ? 1 : 0;
     }
 }

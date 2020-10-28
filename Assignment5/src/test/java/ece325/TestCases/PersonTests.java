@@ -44,6 +44,6 @@ public class PersonTests {
 
     @Test
     public void runTest() {
-        assertTrue(isSorted());
+        assertTrue("Person TreeSet should be automatically sorted", isSorted());
     }
 }
