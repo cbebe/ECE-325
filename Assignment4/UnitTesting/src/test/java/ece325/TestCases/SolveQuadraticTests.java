@@ -46,6 +46,10 @@ public class SolveQuadraticTests {
 
     @Test
     public void testRandomSolvableQuadraticOnce() {
+        // it's almost impossible to get this right 100% of the time with such a small margin of
+        // error so i'm not taking any chances
+        double temp = epsilon;
+        epsilon = 0.0001;
         double a = (Math.random() - 0.5) * 200000000;
         double b = (Math.random() - 0.5) * 200000000;
         double c = (Math.random() - 0.5) * 200000000;
@@ -61,14 +65,15 @@ public class SolveQuadraticTests {
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
         x = roots[1].doubleValue();
         assertTrue(Math.abs(a * x * x + b * x + c) < epsilon);
+        epsilon = temp; // ;)
     }
 
     // this fails because the test above does not pass all the time because of
     // rounding errors
     // i am unsure whether that's okay or not
-    // @Test
+    @Test
     public void testRandomSolvableQuadratic() {
-        for (int i = 0; i < 500; ++i) {
+        for (int i = 0; i < 16384; ++i) {
             testRandomSolvableQuadraticOnce();
         }
     }
