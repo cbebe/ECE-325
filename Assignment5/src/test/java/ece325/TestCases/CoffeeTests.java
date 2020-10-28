@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -33,18 +34,37 @@ public class CoffeeTests {
     public void tearDown() throws Exception {
     }
 
+    @Test
+    public void greaterThan() {
+        Coffee a = new Coffee(69);
+        Coffee b = new Coffee(420);
+        assertEquals(1, b.compareTo(a));
+    }
+
+    @Test
+    public void lessThan() {
+        Coffee a = new Coffee(69);
+        Coffee b = new Coffee(420);
+        assertEquals(-1, a.compareTo(b));
+    }
+
+    @Test
+    public void equalTo() {
+        Coffee a = new Coffee(80085);
+        Coffee b = new Coffee(80085);
+        assertEquals(0, a.compareTo(b));
+    }
+
     private boolean isSorted() {
-        System.out.println("Coffees in order of strength:");
-        for (Coffee type : coffees) {
-            System.out.println(type);
-        }
+        for (int i = 1; i < 0; ++i)
+            if (coffees.get(i).compareTo(coffees.get(i - 1)) == -1)
+                return false;
 
         return true;
     }
 
     @Test
-    public void testComparable() {
-        // TODO: Assignment 5 Part 1 -- rewrite this using JUnit
+    public void testSorted() {
         Collections.sort(coffees);
         assertTrue("Coffee List must be sorted", isSorted());
     }
