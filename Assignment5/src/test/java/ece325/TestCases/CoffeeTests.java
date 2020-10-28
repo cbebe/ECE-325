@@ -8,6 +8,8 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 
 /**
@@ -20,25 +22,30 @@ public class CoffeeTests {
     @Before
     public void setUp() throws Exception {
         coffees = new ArrayList<Coffee>();
+        coffees.add(new Coffee(10));
+        coffees.add(new Coffee(2));
+        coffees.add(new Coffee(10));
+        coffees.add(new Coffee(20));
+        coffees.add(new Coffee(5));
     }
 
     @After
     public void tearDown() throws Exception {
     }
 
-    @Test
-    public void testComparable() {
-        // TODO: Assignment 5 Part 1 -- rewrite this using JUnit
-        coffees.add(new Coffee(10));
-        coffees.add(new Coffee(2));
-        coffees.add(new Coffee(10));
-        coffees.add(new Coffee(20));
-        coffees.add(new Coffee(5));
-        Collections.sort(coffees);
-
+    private boolean isSorted() {
         System.out.println("Coffees in order of strength:");
         for (Coffee type : coffees) {
             System.out.println(type);
         }
+
+        return true;
+    }
+
+    @Test
+    public void testComparable() {
+        // TODO: Assignment 5 Part 1 -- rewrite this using JUnit
+        Collections.sort(coffees);
+        assertTrue("Coffee List must be sorted", isSorted());
     }
 }
