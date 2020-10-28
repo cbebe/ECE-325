@@ -59,10 +59,21 @@ public class PersonTests {
         assertEquals(0, p.compare(a, b));
     }
 
+    /**
+     * @return {@code boolean} whether the TreeSet is sorted or not
+     */
     private boolean isSorted() {
         Iterator<Person> iter = persons.iterator();
-        while (iter.hasNext())
-            System.out.println(iter.next());
+        PersonComparator p = new PersonComparator();
+
+        Person a = iter.next();
+        while (iter.hasNext()) {
+            Person b = iter.next();
+            // a should be less than or equal to b
+            if (p.compare(a, b) > 0)
+                return false;
+            a = b;
+        }
 
         return true;
     }
