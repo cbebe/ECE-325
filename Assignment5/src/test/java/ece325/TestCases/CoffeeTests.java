@@ -38,14 +38,14 @@ public class CoffeeTests {
     public void greaterThan() {
         Coffee a = new Coffee(69);
         Coffee b = new Coffee(420);
-        assertEquals(1, b.compareTo(a));
+        assertTrue(b.compareTo(a) > 0);
     }
 
     @Test
     public void lessThan() {
         Coffee a = new Coffee(69);
         Coffee b = new Coffee(420);
-        assertEquals(-1, a.compareTo(b));
+        assertTrue(a.compareTo(b) < 0);
     }
 
     @Test
@@ -56,8 +56,8 @@ public class CoffeeTests {
     }
 
     private boolean isSorted() {
-        for (int i = 1; i < 0; ++i)
-            if (coffees.get(i).compareTo(coffees.get(i - 1)) == -1)
+        for (int i = 1; i < coffees.size(); ++i)
+            if (coffees.get(i).compareTo(coffees.get(i - 1)) < 0)
                 return false;
 
         return true;

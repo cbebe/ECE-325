@@ -18,7 +18,6 @@ public class Coffee implements Comparable<Coffee> {
      * @return {@code int} the result of the comparison
      */
     public int compareTo(Coffee c) {
-        // ternary operators muahaha
-        return (c.strength > strength) ? -1 : (c.strength < strength) ? 1 : 0;
+        return strength - c.strength;
     }
 }
