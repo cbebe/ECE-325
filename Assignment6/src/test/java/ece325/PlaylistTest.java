@@ -151,7 +151,7 @@ public class PlaylistTest extends TestCase {
         if (!itr.hasNext())
             return true;
 
-        Comparator<Song> c = byArtist ? new ArtistComparator<Song>() : new TitleComparator<Song>();
+        Comparator<Song> c = byArtist ? new ArtistComparator<>() : new TitleComparator<>();
         Song a = itr.next();
 
         while (itr.hasNext()) {
