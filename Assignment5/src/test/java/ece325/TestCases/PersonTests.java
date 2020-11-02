@@ -1,17 +1,10 @@
 package ece325.TestCases;
 
 import ece325.Person;
-import ece325.PersonComparator;
-import java.util.TreeSet;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.Iterator;
-import java.util.Set;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -19,13 +12,13 @@ import org.junit.Test;
  * Part 3: The {@code PersonTest} class
  */
 public class PersonTests {
-    private Set<Person> persons;
-    private PersonComparator p;
+    private java.util.Set<Person> persons;
+    private ece325.PersonComparator p;
 
-    @Before
+    @org.junit.Before
     public void setUp() throws Exception {
         p = new PersonComparator();
-        persons = new TreeSet<Person>(p);
+        persons = new java.util.TreeSet<Person>(p);
         persons.add(new Person(32));
         persons.add(new Person(17));
         persons.add(new Person(13));
@@ -33,7 +26,7 @@ public class PersonTests {
         persons.add(new Person(27));
     }
 
-    @After
+    @org.junit.After
     public void tearDown() throws Exception {
     }
 
@@ -62,7 +55,7 @@ public class PersonTests {
      * @return {@code boolean} whether the TreeSet is sorted or not
      */
     private boolean isSorted() {
-        Iterator<Person> iter = persons.iterator();
+        java.util.Iterator<Person> iter = persons.iterator();
         Person a = iter.next();
         while (iter.hasNext()) {
             Person b = iter.next();
