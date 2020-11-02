@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/home/charles/jdk/lib"/>
-    <property name="sun.java.command" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter17796884591542454571.jar /home/charles/School/325ECE/Assignments/Assignment6/target/surefire 2020-11-02T02-19-02_237-jvmRun1 surefire9118648950085220435tmp surefire_018179957843125028539tmp"/>
+    <property name="sun.java.command" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter14189668388650342870.jar /home/charles/School/325ECE/Assignments/Assignment6/target/surefire 2020-11-02T03-38-16_565-jvmRun1 surefire93855165140043813tmp surefire_014711781668876502834tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/charles/School/325ECE/Assignments/Assignment6/target/test-classes:/home/charles/School/325ECE/Assignments/Assignment6/target/classes:/home/charles/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/charles/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter17796884591542454571.jar"/>
+    <property name="surefire.real.class.path" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter14189668388650342870.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12"/>
     <property name="user.name" value="charles"/>
@@ -51,15 +51,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="test_getSong" classname="ece325.PlaylistTest" time="0.001"/>
+  <testcase name="test_getSong" classname="ece325.PlaylistTest" time="0.002"/>
   <testcase name="test_hasTitle" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_hasArtist" classname="ece325.PlaylistTest" time="0.007"/>
+  <testcase name="test_hasArtist" classname="ece325.PlaylistTest" time="0.001"/>
   <testcase name="test_findElement" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_numberOfArtists" classname="ece325.PlaylistTest" time="0"/>
+  <testcase name="test_numberOfArtists" classname="ece325.PlaylistTest" time="0.001"/>
   <testcase name="test_removeSong" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_numberOfTitles" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_sortByArtist" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_Constructor" classname="ece325.PlaylistTest" time="0"/>
+  <testcase name="test_sortByArtist" classname="ece325.PlaylistTest" time="0.001"/>
+  <testcase name="test_Constructor" classname="ece325.PlaylistTest" time="0.001"/>
   <testcase name="test_playTime" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_getTitle" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_sortByTitle" classname="ece325.PlaylistTest" time="0.001"/>
