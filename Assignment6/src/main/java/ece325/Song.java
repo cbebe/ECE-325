@@ -1,10 +1,13 @@
 package ece325;
 
+import java.util.Comparator;
+
 /**
  * Assignment 6: Test Driven Development <br />
  * The {@code Song} class
  */
 public class Song {
+    static CaseIgnoreComparator c = new CaseIgnoreComparator();
     String artist;
     String title;
     double length;
@@ -42,7 +45,7 @@ public class Song {
      * @return {@code boolean} true if the artist matches this artist, ignoring case
      */
     public boolean isArtist(String artist) {
-        return this.artist.toLowerCase().equals(artist.toLowerCase());
+        return c.compare(this.artist, artist) == 0;
     }
 
     /**
@@ -50,7 +53,7 @@ public class Song {
      * @return {@code boolean} true if the title matches this title, ignoring case
      */
     public boolean isTitle(String title) {
-        return this.title.toLowerCase().equals(title.toLowerCase());
+        return c.compare(this.title, title) == 0;
     }
 
     /**
@@ -86,12 +89,40 @@ interface SongHashable {
 
 class ArtistHash implements SongHashable {
     public String hash(Song song) {
-        return song.artist.toLowerCase();
+        return song.artist;
     }
 }
 
 class TitleHash implements SongHashable {
     public String hash(Song song) {
-        return song.title.toLowerCase();
+        return song.title;
+    }
+}
+
+/**
+ * String comparator that ignores case
+ */
+class CaseIgnoreComparator implements Comparator<String> {
+    public int compare(String a, String b) {
+        return b.toLowerCase().compareTo(a.toLowerCase());
+    }
+}
+
+/**
+ * Comparators for artist and title Strings, note that they are case insensitive
+ * 
+ * @param a {@code String} the first object
+ * @param b {@code String} the second object
+ * @return {@code int} result of CaseIgnoreComparator.compare(String, String)
+ */
+class ArtistComparator implements Comparator<Song> {
+    public int compare(Song a, Song b) {
+        return new CaseIgnoreComparator().compare(a.artist, b.artist);
+    }
+}
+
+class TitleComparator implements Comparator<Song> {
+    public int compare(Song a, Song b) {
+        return new CaseIgnoreComparator().compare(a.title, b.title);
     }
 }

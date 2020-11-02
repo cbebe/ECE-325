@@ -1,27 +1,7 @@
 package ece325;
 
 import java.util.HashSet;
-import java.util.Comparator;
 import java.util.Collections;
-
-/**
- * Comparators for artist and title Strings, note that they are case sensitive
- * 
- * @param a {@code String} the first object
- * @param b {@code String} the second object
- * @return {@code int} result of String.compareTo(String)
- */
-class ArtistComparator<E extends Song> implements Comparator<E> {
-    public int compare(E a, E b) {
-        return b.artist.toLowerCase().compareTo(a.artist.toLowerCase());
-    }
-}
-
-class TitleComparator<E extends Song> implements Comparator<E> {
-    public int compare(E a, E b) {
-        return b.title.toLowerCase().compareTo(a.title.toLowerCase());
-    }
-}
 
 /**
  * Assignment 6: Test Driven Development <br />
@@ -146,7 +126,7 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
         itr = this.iterator();
         int i = 0;
         while (itr.hasNext()) {
-            String hash = h.hash(itr.next());
+            String hash = h.hash(itr.next()).toLowerCase();
             if (!set.contains(hash)) {
                 set.add(hash);
                 ++i;
@@ -174,14 +154,14 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
      * Sorts the playlist by artist
      */
     public void sortByArtist() {
-        Collections.sort(this, new ArtistComparator<E>());
+        Collections.sort(this, new ArtistComparator());
     }
 
     /**
      * Sorts the playlist by title
      */
     public void sortByTitle() {
-        Collections.sort(this, new TitleComparator<E>());
+        Collections.sort(this, new TitleComparator());
     }
 
     /**

@@ -17,7 +17,7 @@ public class SongTest extends TestCase {
     @Before
     protected void setUp() throws Exception {
         super.setUp();
-        songA = new Song("Artist", "Song A", (float)4.35);
+        songA = new Song("Artist", "Song A", (float) 4.35);
         songB = new Song("Artist", "Song B", 5.00);
     }
 
@@ -35,19 +35,19 @@ public class SongTest extends TestCase {
     }
 
     @Test
-    public void test_getArtist(){
+    public void test_getArtist() {
         assertTrue(songA.getArtist().toLowerCase().equals("artist"));
         assertFalse(songA.getArtist().toLowerCase().equals("different artist"));
     }
 
     @Test
-    public void test_getTitle(){
+    public void test_getTitle() {
         assertTrue(songA.getTitle().toLowerCase().equals("song a"));
         assertFalse(songA.getTitle().toLowerCase().equals("different title"));
     }
 
     @Test
-    public void test_getLength(){
+    public void test_getLength() {
         assertTrue(Math.abs(songA.getLength() - 4.35) < 0.0001);
     }
 
@@ -55,12 +55,12 @@ public class SongTest extends TestCase {
     public void test_equals() {
         assertNotNull(songA);
         assertTrue(songA.equals(songA));
-        assertTrue(songA.equals(new Song("aRtIsT", "sOnG a", (float)4.35)));
+        assertTrue(songA.equals(new Song("aRtIsT", "sOnG a", (float) 4.35)));
 
         assertFalse(songA.equals(songB));
-        assertFalse(songA.equals(new Song("Different Artist", "Song A", (float)4.35)));
-        assertFalse(songA.equals(new Song("Artist", "Different Title", (float)4.35)));
-        assertFalse(songA.equals(new Song("Artist", "Song A", (float)8.97)));
+        assertFalse(songA.equals(new Song("Different Artist", "Song A", (float) 4.35)));
+        assertFalse(songA.equals(new Song("Artist", "Different Title", (float) 4.35)));
+        assertFalse(songA.equals(new Song("Artist", "Song A", (float) 8.97)));
     }
 
     @Test
