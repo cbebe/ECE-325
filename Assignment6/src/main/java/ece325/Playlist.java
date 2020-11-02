@@ -5,6 +5,7 @@ import java.util.Collections;
 
 /**
  * Assignment 6: Test Driven Development <br />
+ * Charles Ancheta, 1581672 <br />
  * The {@code Playlist} class
  */
 @SuppressWarnings("serial")
@@ -29,7 +30,7 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
     }
 
     /**
-     * Add a song to the playlist <br>
+     * Add a song to the playlist
      * 
      * @param song {@code E} the song to add
      * @return {@code boolean} true if the song was added successfully

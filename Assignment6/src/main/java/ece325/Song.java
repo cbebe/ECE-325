@@ -4,6 +4,7 @@ import java.util.Comparator;
 
 /**
  * Assignment 6: Test Driven Development <br />
+ * Charles Ancheta, 1581672 <br />
  * The {@code Song} class
  */
 public class Song {
@@ -104,12 +105,13 @@ class TitleHash implements SongHashable {
  */
 class CaseIgnoreComparator implements Comparator<String> {
     public int compare(String a, String b) {
-        return b.toLowerCase().compareTo(a.toLowerCase());
+        return a.toLowerCase().compareTo(b.toLowerCase());
     }
 }
 
 /**
- * Comparators for artist and title Strings, note that they are case insensitive
+ * Alphabetical comparators for artist and title Strings <br />
+ * note that they are case insensitive
  * 
  * @param a {@code String} the first object
  * @param b {@code String} the second object
@@ -117,12 +119,12 @@ class CaseIgnoreComparator implements Comparator<String> {
  */
 class ArtistComparator implements Comparator<Song> {
     public int compare(Song a, Song b) {
-        return new CaseIgnoreComparator().compare(a.artist, b.artist);
+        return new CaseIgnoreComparator().compare(b.artist, a.artist);
     }
 }
 
 class TitleComparator implements Comparator<Song> {
     public int compare(Song a, Song b) {
-        return new CaseIgnoreComparator().compare(a.title, b.title);
+        return new CaseIgnoreComparator().compare(b.title, a.title);
     }
 }
