@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/home/charles/jdk/lib"/>
-    <property name="sun.java.command" value="/home/charles/School/325ECE/Assignments/Assignment5/target/surefire/surefirebooter6878815817124574909.jar /home/charles/School/325ECE/Assignments/Assignment5/target/surefire 2020-10-30T22-29-57_955-jvmRun1 surefire6284593837078917844tmp surefire_0950195993264932350tmp"/>
+    <property name="sun.java.command" value="/home/charles/School/325ECE/Assignments/Assignment5/target/surefire/surefirebooter709839203160950949.jar /home/charles/School/325ECE/Assignments/Assignment5/target/surefire 2020-10-30T23-36-27_635-jvmRun1 surefire574903859388177172tmp surefire_015389234333064108240tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/charles/School/325ECE/Assignments/Assignment5/target/test-classes:/home/charles/School/325ECE/Assignments/Assignment5/target/classes:/home/charles/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/charles/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/charles/School/325ECE/Assignments/Assignment5/target/surefire/surefirebooter6878815817124574909.jar"/>
+    <property name="surefire.real.class.path" value="/home/charles/School/325ECE/Assignments/Assignment5/target/surefire/surefirebooter709839203160950949.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12"/>
     <property name="user.name" value="charles"/>

@@ -20,10 +20,12 @@ import org.junit.Test;
  */
 public class PersonTests {
     private Set<Person> persons;
+    private PersonComparator p;
 
     @Before
     public void setUp() throws Exception {
-        persons = new TreeSet<Person>(new PersonComparator());
+        p = new PersonComparator();
+        persons = new TreeSet<Person>(p);
         persons.add(new Person(32));
         persons.add(new Person(17));
         persons.add(new Person(13));
@@ -37,7 +39,6 @@ public class PersonTests {
 
     @Test
     public void greaterThan() {
-        PersonComparator p = new PersonComparator();
         Person a = new Person(420);
         Person b = new Person(69);
         assertTrue(p.compare(a, b) > 0);
@@ -45,7 +46,6 @@ public class PersonTests {
 
     @Test
     public void lessThan() {
-        PersonComparator p = new PersonComparator();
         Person a = new Person(420);
         Person b = new Person(69);
         assertTrue(p.compare(b, a) < 0);
@@ -53,7 +53,6 @@ public class PersonTests {
 
     @Test
     public void equalTo() {
-        PersonComparator p = new PersonComparator();
         Person a = new Person(80085);
         Person b = new Person(80085);
         assertEquals(0, p.compare(a, b));
@@ -64,8 +63,6 @@ public class PersonTests {
      */
     private boolean isSorted() {
         Iterator<Person> iter = persons.iterator();
-        PersonComparator p = new PersonComparator();
-
         Person a = iter.next();
         while (iter.hasNext()) {
             Person b = iter.next();
