@@ -78,3 +78,20 @@ public class Song {
         return s.isArtist(artist) && s.isTitle(title) && s.length == length;
     }
 }
+
+// Use polymorphism for finding unique artists and titles
+interface SongHashable {
+    public String hash(Song song);
+}
+
+class ArtistHash implements SongHashable {
+    public String hash(Song song) {
+        return song.artist.toLowerCase();
+    }
+}
+
+class TitleHash implements SongHashable {
+    public String hash(Song song) {
+        return song.title.toLowerCase();
+    }
+}
