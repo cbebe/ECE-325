@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ece325.AllTests" time="0.029" tests="21" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="ece325.AllTests" time="0.019" tests="21" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="14"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -12,7 +12,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CA"/>
     <property name="sun.boot.library.path" value="/home/charles/jdk/lib"/>
-    <property name="sun.java.command" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter14189668388650342870.jar /home/charles/School/325ECE/Assignments/Assignment6/target/surefire 2020-11-02T03-38-16_565-jvmRun1 surefire93855165140043813tmp surefire_014711781668876502834tmp"/>
+    <property name="sun.java.command" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter18118091195341096827.jar /home/charles/School/325ECE/Assignments/Assignment6/target/surefire 2020-11-02T03-45-44_327-jvmRun1 surefire11082283937534606913tmp surefire_08887054367010082637tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/home/charles/School/325ECE/Assignments/Assignment6/target/test-classes:/home/charles/School/325ECE/Assignments/Assignment6/target/classes:/home/charles/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/charles/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -27,7 +27,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter14189668388650342870.jar"/>
+    <property name="surefire.real.class.path" value="/home/charles/School/325ECE/Assignments/Assignment6/target/surefire/surefirebooter18118091195341096827.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="14.0.2+12"/>
     <property name="user.name" value="charles"/>
@@ -51,25 +51,25 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="58.0"/>
   </properties>
-  <testcase name="test_isArtist" classname="ece325.SongTest" time="0.001"/>
+  <testcase name="test_isArtist" classname="ece325.SongTest" time="0"/>
   <testcase name="test_equals" classname="ece325.SongTest" time="0"/>
   <testcase name="test_Constructor" classname="ece325.SongTest" time="0"/>
   <testcase name="test_getArtist" classname="ece325.SongTest" time="0"/>
   <testcase name="test_getLength" classname="ece325.SongTest" time="0"/>
   <testcase name="test_getTitle" classname="ece325.SongTest" time="0.001"/>
   <testcase name="test_isTitle" classname="ece325.SongTest" time="0"/>
-  <testcase name="test_getSong" classname="ece325.PlaylistTest" time="0.001"/>
+  <testcase name="test_getSong" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_hasTitle" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_hasArtist" classname="ece325.PlaylistTest" time="0.001"/>
+  <testcase name="test_hasArtist" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_findElement" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_numberOfArtists" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_removeSong" classname="ece325.PlaylistTest" time="0.001"/>
-  <testcase name="test_numberOfTitles" classname="ece325.PlaylistTest" time="0"/>
-  <testcase name="test_sortByArtist" classname="ece325.PlaylistTest" time="0"/>
+  <testcase name="test_removeSong" classname="ece325.PlaylistTest" time="0"/>
+  <testcase name="test_numberOfTitles" classname="ece325.PlaylistTest" time="0.002"/>
+  <testcase name="test_sortByArtist" classname="ece325.PlaylistTest" time="0.001"/>
   <testcase name="test_Constructor" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_playTime" classname="ece325.PlaylistTest" time="0.001"/>
   <testcase name="test_getTitle" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_sortByTitle" classname="ece325.PlaylistTest" time="0"/>
   <testcase name="test_numberOfSongs" classname="ece325.PlaylistTest" time="0.001"/>
-  <testcase name="test_addtoPList" classname="ece325.PlaylistTest" time="0.001"/>
+  <testcase name="test_addtoPList" classname="ece325.PlaylistTest" time="0"/>
 </testsuite>
