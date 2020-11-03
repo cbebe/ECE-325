@@ -11,6 +11,7 @@ import java.util.Collections;
 @SuppressWarnings("serial")
 public class Playlist<E extends Song> extends java.util.ArrayList<E> {
     java.util.Iterator<E> itr = this.iterator();
+    static AlphabetComparator c = new AlphabetComparator();
     String title;
 
     /**
@@ -93,7 +94,7 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
      * @return {@code boolean} true if the given title matches the playlist's title
      */
     public boolean hasTitle(String title) {
-        return this.title.toLowerCase().equals(title.toLowerCase());
+        return c.compare(this.title, title) == 0;
     }
 
     /**

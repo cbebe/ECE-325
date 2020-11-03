@@ -8,9 +8,8 @@ import java.util.Comparator;
  * The {@code Song} class
  */
 public class Song {
-    static CaseIgnoreComparator c = new CaseIgnoreComparator();
-    String artist;
-    String title;
+    static AlphabetComparator c = new AlphabetComparator();
+    String artist, title;
     double length;
 
     /**
@@ -103,9 +102,9 @@ class TitleHash implements SongHashable {
 /**
  * String comparator that ignores case
  */
-class CaseIgnoreComparator implements Comparator<String> {
+class AlphabetComparator implements Comparator<String> {
     public int compare(String a, String b) {
-        return a.toLowerCase().compareTo(b.toLowerCase());
+        return b.toLowerCase().compareTo(a.toLowerCase());
     }
 }
 
@@ -119,12 +118,12 @@ class CaseIgnoreComparator implements Comparator<String> {
  */
 class ArtistComparator implements Comparator<Song> {
     public int compare(Song a, Song b) {
-        return new CaseIgnoreComparator().compare(b.artist, a.artist);
+        return new AlphabetComparator().compare(a.artist, b.artist);
     }
 }
 
 class TitleComparator implements Comparator<Song> {
     public int compare(Song a, Song b) {
-        return new CaseIgnoreComparator().compare(b.title, a.title);
+        return new AlphabetComparator().compare(a.title, b.title);
     }
 }
