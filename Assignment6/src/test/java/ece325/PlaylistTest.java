@@ -145,13 +145,16 @@ public class PlaylistTest extends TestCase {
         assertEquals(-1, aPlaylist.findSong(new Song("Not", "There", 0)));
     }
 
-    private boolean isSorted(boolean byArtist) {
+    /**
+     * @param c {@code Comparator<Song>} Comparator object to compare with
+     * @return {@code boolean} {@code true} if the playlist is sorted
+     */
+    private boolean isSorted(Comparator<Song> c) {
         Iterator<Song> itr = aPlaylist.iterator();
         // no elements, already sorted
         if (!itr.hasNext())
             return true;
 
-        Comparator<Song> c = byArtist ? new ArtistComparator() : new TitleComparator();
         Song a = itr.next();
 
         while (itr.hasNext()) {
@@ -168,13 +171,13 @@ public class PlaylistTest extends TestCase {
     public void test_sortByArtist() {
         fillPlaylist();
         aPlaylist.sortByArtist();
-        assertTrue("Must be sorted by artist", isSorted(true));
+        assertTrue("Must be sorted by artist", isSorted(new ArtistComparator()));
     }
 
     @Test
     public void test_sortByTitle() {
         fillPlaylist();
         aPlaylist.sortByTitle();
-        assertTrue("Must be sorted by title", isSorted(false));
+        assertTrue("Must be sorted by title", isSorted(new TitleComparator()));
     }
 }

@@ -82,7 +82,7 @@ public class Song {
     }
 }
 
-// Use polymorphism for finding unique artists and titles
+// Use interface for finding unique artists and titles
 interface SongHashable {
     public String hash(Song song);
 }
