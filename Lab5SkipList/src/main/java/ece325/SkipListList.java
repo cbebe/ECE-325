@@ -1,18 +1,20 @@
+package ece325;
+
 import java.util.*;
 
 /**
  * SkipList Adaptor to provide the List<T> interface
+ *
  * @param <T> {@code T} value type
  */
-public class SkipListList<T extends Comparable<T>> extends SkipList<Integer,T> implements List<T>
-{
+public class SkipListList<T extends Comparable<T>> extends SkipList<Integer, T> implements List<T> {
 
     // *******************************************************
     // Methods required for benchmarking
 
     @Override
     public boolean isEmpty() {
-        return this.size()==0;
+        return this.size() == 0;
     }
 
     @Override
@@ -22,14 +24,13 @@ public class SkipListList<T extends Comparable<T>> extends SkipList<Integer,T> i
 
     @Override
     public void add(int i, T t) {
-        this.insert(i,t);
+        this.insert(i, t);
     }
 
     @Override
     public T remove(int i) {
         return super.remove(i);
     }
-
 
     // *******************************************************
     // The following methods are not required for benchmarking
@@ -91,7 +92,6 @@ public class SkipListList<T extends Comparable<T>> extends SkipList<Integer,T> i
 
     @Override
     public void clear() {
-
     }
 
     @Override
@@ -124,5 +124,3 @@ public class SkipListList<T extends Comparable<T>> extends SkipList<Integer,T> i
         return null;
     }
 }
-
-
