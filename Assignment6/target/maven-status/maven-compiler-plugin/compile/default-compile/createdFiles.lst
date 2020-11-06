@@ -1,2 +1,6 @@
-ece325/Playlist.class
+ece325/TitleHash.class
+ece325/ArtistHash.class
 ece325/Song.class
+ece325/SongComparator.class
+ece325/SongHashable.class
+ece325/Playlist.class
