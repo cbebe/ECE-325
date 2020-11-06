@@ -10,9 +10,9 @@ import java.util.Collections;
  */
 @SuppressWarnings("serial")
 public class Playlist<E extends Song> extends java.util.ArrayList<E> {
-    java.util.Iterator<E> itr = this.iterator();
-    static AlphabetComparator c = new AlphabetComparator();
-    String title;
+    private String title;
+    private static ArtistHash artistHash = new ArtistHash();
+    private static TitleHash titleHash = new TitleHash();
 
     /**
      * Constructor for the {@code Playlist} class
@@ -80,11 +80,9 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
      * @return {@code boolean} true if the artist has a song in the playlist
      */
     public boolean hasArtist(String artist) {
-        itr = this.iterator();
-        while (itr.hasNext()) {
-            if (itr.next().isArtist(artist))
+        for (E s : this)
+            if (s.isArtist(artist))
                 return true;
-        }
 
         return false;
     }
@@ -94,18 +92,16 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
      * @return {@code boolean} true if the given title matches the playlist's title
      */
     public boolean hasTitle(String title) {
-        return c.compare(this.title, title) == 0;
+        return this.title.equalsIgnoreCase(title);
     }
 
     /**
      * @return {@code double} the total playtime of the playlist
      */
     public double playTime() {
-        itr = this.iterator();
         double playTime = 0;
-        while (itr.hasNext()) {
-            playTime += itr.next().getLength();
-        }
+        for (E s : this)
+            playTime += s.getLength();
         return playTime;
     }
 
@@ -125,54 +121,57 @@ public class Playlist<E extends Song> extends java.util.ArrayList<E> {
      */
     private int numberOfUnique(SongHashable h) {
         HashSet<String> set = new HashSet<>();
-        itr = this.iterator();
-        int i = 0;
-        while (itr.hasNext()) {
-            String hash = h.hash(itr.next()).toLowerCase();
-            if (!set.contains(hash)) {
-                set.add(hash);
-                ++i;
-            }
-        }
+        for (E s : this)
+            set.add(h.getField(s).toLowerCase());
 
-        return i;
+        return set.size();
     }
 
     /**
      * @return {@code int} the number of unique artists in the playlist
      */
     public int numberOfArtists() {
-        return numberOfUnique(new ArtistHash());
+        return numberOfUnique(artistHash);
     }
 
     /**
      * @return {@code int} the number of unique titles in the playlist
      */
     public int numberOfTitles() {
-        return numberOfUnique(new TitleHash());
+        return numberOfUnique(titleHash);
     }
 
     /**
      * Sorts the playlist by artist
      */
     public void sortByArtist() {
-        Collections.sort(this, new ArtistComparator());
+        Collections.sort(this, new SongComparator(artistHash));
     }
 
     /**
      * Sorts the playlist by title
      */
     public void sortByTitle() {
-        Collections.sort(this, new TitleComparator());
+        Collections.sort(this, new SongComparator(titleHash));
     }
 
     /**
      * Prints out the playlist
      */
     public void printPlaylist() {
-        itr = this.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next().toString());
-        }
+        for (E s : this)
+            System.out.println(s.toString());
+    }
+
+    public static void main(String args[]) {
+        Playlist<Song> p = new Playlist<>("Hello");
+        p.add(new Song("domino", "baila baila comigo", 3.383));
+        p.add(new Song("paul mccartney", "temporary secretary", 3.217));
+        p.add(new Song("smash mouth", "all star", 3.367));
+        p.sortByArtist();
+        p.printPlaylist();
+        p.sortByTitle();
+        p.printPlaylist();
+        System.out.println(artistHash);
     }
 }

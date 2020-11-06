@@ -8,9 +8,9 @@ import java.util.Comparator;
  * The {@code Song} class
  */
 public class Song {
-    static AlphabetComparator c = new AlphabetComparator();
-    String artist, title;
-    double length;
+    private String artist;
+    private String title;
+    private double length;
 
     /**
      * Constructor for the {@code Song} class
@@ -45,7 +45,7 @@ public class Song {
      * @return {@code boolean} true if the artist matches this artist, ignoring case
      */
     public boolean isArtist(String artist) {
-        return c.compare(this.artist, artist) == 0;
+        return this.artist.equalsIgnoreCase(artist);
     }
 
     /**
@@ -53,7 +53,7 @@ public class Song {
      * @return {@code boolean} true if the title matches this title, ignoring case
      */
     public boolean isTitle(String title) {
-        return c.compare(this.title, title) == 0;
+        return this.title.equalsIgnoreCase(title);
     }
 
     /**
@@ -77,53 +77,50 @@ public class Song {
             return false;
 
         Song s = (Song) obj;
-
         return s.isArtist(artist) && s.isTitle(title) && s.length == length;
     }
 }
 
-// Use interface for finding unique artists and titles
+// Interface for finding unique artists and titles
+// Can be extended for other fields like genre, composer, etc.
 interface SongHashable {
-    public String hash(Song song);
+    public String getField(Song song);
 }
 
 class ArtistHash implements SongHashable {
-    public String hash(Song song) {
-        return song.artist;
+    public String getField(Song song) {
+        return song.getArtist();
     }
 }
 
 class TitleHash implements SongHashable {
-    public String hash(Song song) {
-        return song.title;
+    public String getField(Song song) {
+        return song.getTitle();
     }
 }
 
 /**
- * String comparator that ignores case
- */
-class AlphabetComparator implements Comparator<String> {
-    public int compare(String a, String b) {
-        return b.toLowerCase().compareTo(a.toLowerCase());
-    }
-}
-
-/**
- * Alphabetical comparators for artist and title Strings <br />
+ * Alphabetical comparator for different {@code Song} fields<br />
  * note that they are case insensitive
- * 
- * @param a {@code String} the first object
- * @param b {@code String} the second object
- * @return {@code int} result of CaseIgnoreComparator.compare(String, String)
  */
-class ArtistComparator implements Comparator<Song> {
-    public int compare(Song a, Song b) {
-        return new AlphabetComparator().compare(a.artist, b.artist);
-    }
-}
+class SongComparator implements Comparator<Song> {
+    private SongHashable hash;
 
-class TitleComparator implements Comparator<Song> {
+    /**
+     * Constructor for {@code SongComparator} class
+     * 
+     * @param hash {@code SongHashable} field used for comparison
+     */
+    public SongComparator(SongHashable hash) {
+        this.hash = hash;
+    }
+
+    /**
+     * @param a {@code String} the first object
+     * @param b {@code String} the second object
+     * @return {@code int} result of string comparison
+     */
     public int compare(Song a, Song b) {
-        return new AlphabetComparator().compare(a.title, b.title);
+        return hash.getField(a).compareToIgnoreCase(hash.getField(b));
     }
 }

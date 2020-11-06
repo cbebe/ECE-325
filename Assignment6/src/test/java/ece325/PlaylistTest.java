@@ -146,16 +146,17 @@ public class PlaylistTest extends TestCase {
     }
 
     /**
-     * @param c {@code Comparator<Song>} Comparator object to compare with
+     * @param hash {@code SongHashable} SongHashable object with appropriate field
      * @return {@code boolean} {@code true} if the playlist is sorted
      */
-    private boolean isSorted(Comparator<Song> c) {
+    private boolean isSorted(SongHashable hash) {
         Iterator<Song> itr = aPlaylist.iterator();
         // no elements, already sorted
         if (!itr.hasNext())
             return true;
 
         Song a = itr.next();
+        Comparator<Song> c = new SongComparator(hash);
 
         while (itr.hasNext()) {
             Song b = itr.next();
@@ -171,13 +172,13 @@ public class PlaylistTest extends TestCase {
     public void test_sortByArtist() {
         fillPlaylist();
         aPlaylist.sortByArtist();
-        assertTrue("Must be sorted by artist", isSorted(new ArtistComparator()));
+        assertTrue("Must be sorted by artist", isSorted(new ArtistHash()));
     }
 
     @Test
     public void test_sortByTitle() {
         fillPlaylist();
         aPlaylist.sortByTitle();
-        assertTrue("Must be sorted by title", isSorted(new TitleComparator()));
+        assertTrue("Must be sorted by title", isSorted(new TitleHash()));
     }
 }
