@@ -13,7 +13,7 @@ public class ArrayListExample {
      * those shapes
      */
     static double total_area(List<? extends TwoDShape<?>> list) {
-        return list.stream().mapToDouble(s -> s.area()).sum();
+        return list.stream().mapToDouble(TwoDShape::area).sum();
     }
 
     /**
@@ -21,7 +21,7 @@ public class ArrayListExample {
      * perimeter
      */
     static double total_perimeter(List<Rectangle> list) {
-        return list.stream().mapToDouble(s -> s.perimeter()).sum();
+        return list.stream().mapToDouble(Rectangle::perimeter).sum();
     }
 
     /**
@@ -30,7 +30,7 @@ public class ArrayListExample {
      * of shapes
      */
     static void describe_all(List<? extends GeometricShape<?>> list) {
-        list.forEach(s -> s.describe());
+        list.forEach(GeometricShape::describe);
         System.out.println("total number of shapes: " + list.size());
     }
 
@@ -56,7 +56,7 @@ public class ArrayListExample {
      */
 
     static <T extends GeometricShape<T>> ArrayList<T> supersize_list(ArrayList<T> list) {
-        return new ArrayList<T>(list.stream().map(s -> s.supersize()).collect(Collectors.toList()));
+        return new ArrayList<T>(list.stream().map(T::supersize).collect(Collectors.toList()));
     }
 
     // leave this main method as is:
@@ -74,7 +74,8 @@ public class ArrayListExample {
         spheres.add(new Sphere(10.0));
         spheres.add(new Sphere(50.0));
         spheres.add(new Sphere(0.0));
-        // Super-size them System.out.println();
+        // Super-size them
+        System.out.println();
         System.out.println("super-sizing a list of rectangles");
         ArrayList<Rectangle> double_rects = supersize_list(rects);
         describe_all(double_rects);
