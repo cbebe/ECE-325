@@ -3,7 +3,6 @@
  * An generic array
  */
 public class ArrayExampleGood {
-
     /**
      * Main entry
      * 
@@ -15,5 +14,4 @@ public class ArrayExampleGood {
         geoshapes[0] = new Circle(1.0); // Make this line to compile and run correctly
         geoshapes[1] = new Cone(2.0, 3.0); // Make this line to compile and run correctly
     }
-
 }

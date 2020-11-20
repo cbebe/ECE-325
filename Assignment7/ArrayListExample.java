@@ -6,13 +6,12 @@ import java.util.List;
  * An generic array
  */
 public class ArrayListExample {
-
     /**
      * total_area -- takes a list of 2d shapes and calculates the total area of
      * those shapes
      */
     static double total_area(List<? extends TwoDShape> list) {
-        return list.stream().mapToDouble(s -> s.area()).sum();
+        return list.stream().mapToDouble(TwoDShape::area).sum();
     }
 
     /**
@@ -20,7 +19,7 @@ public class ArrayListExample {
      * perimeter
      */
     static double total_perimeter(List<Rectangle> list) {
-        return list.stream().mapToDouble(s -> s.perimeter()).sum();
+        return list.stream().mapToDouble(Rectangle::perimeter).sum();
     }
 
     /**
@@ -29,7 +28,7 @@ public class ArrayListExample {
      * of shapes
      */
     static void describe_all(List<? extends GeometricShape> list) {
-        list.forEach(s -> s.describe());
+        list.forEach(GeometricShape::describe);
         System.out.println("total number of shapes: " + list.size());
     }
 
@@ -102,5 +101,4 @@ public class ArrayListExample {
         System.out.println("Example list of spheres");
         describe_all(spheres);
     }
-
 }

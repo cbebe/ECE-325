@@ -6,7 +6,6 @@ import java.util.List;
  * An generic array
  */
 public class ArrayListExample {
-
     /**
      * total_area -- takes a list of 2d shapes and calculates the total area of
      * those shapes
