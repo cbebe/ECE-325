@@ -56,6 +56,10 @@ class Bison implements Animal {
     }
 }
 
+/**
+ * Lab 6: Anonymous Inner Classes and Reflection <br />
+ * The {@code Dog} class
+ */
 class Dog implements Animal {
     /**
      * The dog speaks
