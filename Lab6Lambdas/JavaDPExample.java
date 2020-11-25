@@ -5,9 +5,10 @@
 interface Animal {
     /**
      * An animal speaks
-     * @return              {@code String} animal speaks
+     * 
+     * @return {@code String} animal speaks
      */
-    public String speak ();
+    public String speak();
 }
 
 /**
@@ -17,7 +18,8 @@ interface Animal {
 class Lion implements Animal {
     /**
      * The lion speaks
-     * @return              {@code String} lion speaks
+     * 
+     * @return {@code String} lion speaks
      */
     public String speak() {
         return "ROAR";
@@ -31,8 +33,9 @@ class Lion implements Animal {
 class Mouse implements Animal {
     /**
      * The mouse speaks
-     * @return              {@code String} mouse speaks
-    */
+     * 
+     * @return {@code String} mouse speaks
+     */
     public String speak() {
         return "SQUEAK";
     }
@@ -45,7 +48,8 @@ class Mouse implements Animal {
 class Bison implements Animal {
     /**
      * The bison speaks
-     * @return              {@code String} bison speaks
+     * 
+     * @return {@code String} bison speaks
      */
     public String speak() {
         return "BELLOW";
@@ -53,7 +57,14 @@ class Bison implements Animal {
 }
 
 class Dog implements Animal {
-    
+    /**
+     * The dog speaks
+     * 
+     * @return {@code String} dog speaks
+     */
+    public String speak() {
+        return "WOOF";
+    }
 }
 
 /**
@@ -61,20 +72,21 @@ class Dog implements Animal {
  * The {@code AnimalType} class
  */
 class AnimalType {
+    public static final java.util.HashMap<String, Class<? extends Animal>> criteriaMap = new java.util.HashMap<>();
+
     /**
      * Create and return an animal
-     * @param criteria      {@code String} how is the animal like
-     * @return              {@code Animal} the animal
+     * 
+     * @param criteria {@code String} how is the animal like
+     * @return {@code Animal} the animal, null if not in map
      */
     public static Animal getAnimal(String criteria) {
-        // TODO: Lab 6 Part 2-1 -- Refactor this method
-        if (criteria.equals("small"))
-            return new Mouse();
-        else if (criteria.equals("big"))
-            return new Bison();
-        else if (criteria.equals("lazy"))
-            return new Lion();
-        return null;
+        try {
+            return AnimalType.criteriaMap.get(criteria).getDeclaredConstructor().newInstance();
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 }
 
@@ -85,9 +97,15 @@ class AnimalType {
 public class JavaDPExample {
     /**
      * Main entry
-     * @param args          {@code String[]} Command line arguments
+     * 
+     * @param args {@code String[]} Command line arguments
      */
     public static void main(String[] args) {
+        // add classes into animal map
+        AnimalType.criteriaMap.put("small", Mouse.class);
+        AnimalType.criteriaMap.put("big", Bison.class);
+        AnimalType.criteriaMap.put("lazy", Lion.class);
+
         Animal small = AnimalType.getAnimal("small");
         System.out.println(small.getClass().getName() + " speaks: " + small.speak());
         Animal big = AnimalType.getAnimal("big");
@@ -95,18 +113,20 @@ public class JavaDPExample {
         Animal lazy = AnimalType.getAnimal("lazy");
         System.out.println(lazy.getClass().getName() + " speaks: " + lazy.speak());
 
-        // TODO: Lab 6 Part 2-2 -- add an animal "Dog" here: criteria="loyal"; speak="woof"
-        
+        // add dog with criterion: loyal and speak: woof
+        AnimalType.criteriaMap.put("loyal", Dog.class);
+
         Animal loyal = AnimalType.getAnimal("loyal");
         System.out.println(loyal.getClass().getName() + " speaks: " + loyal.speak());
 
-        // TODO: Lab 6 Part 2-3 -- remove the "small" animal here: Mouse
+        // remove mouse class
+        AnimalType.criteriaMap.remove("small");
 
         try {
             small = AnimalType.getAnimal("small");
             System.out.println(small.getClass().getName() + " speaks: " + small.speak());
         } catch (Exception e) {
-            System.out.println("Unkwon animal...");
+            System.out.println("Unknown animal...");
         }
     }
 }
