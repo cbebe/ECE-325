@@ -66,7 +66,7 @@ public class ArrayListExample {
      * @param args {@code String[]} Command line arguments
      */
     public static void main(String[] args) {
-        /* ================ Codes for Part 2 ================ */
+        /* ================ Code for Part 2 ================ */
         // Make a list of shapes, add a circle, a cone and some empty shapes, and then
         // describe all of the shapes
         System.out.println("Example with a list of shapes with a circle,  a cone, and some empty shapes");
@@ -106,7 +106,7 @@ public class ArrayListExample {
         System.out.println();
         System.out.println("Example list of spheres");
         describe_all(spheres);
-        /* ================ Codes for Part 2 ================ */
+        /* ================ Code for Part 3 ================ */
         // Make a list of rectangles and add some rectangles.
         rects = new ArrayList<Rectangle>();
         rects.add(new Rectangle(2.0, 3.0));
